@@ -1,1 +1,2825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Desi Mehnat - Cardio Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --gold-light: #FFD700;
+            --gold-primary: #D4AF37;
+            --gold-secondary: #B8860B;
+            --gold-dark: #996515;
+            --indian-red: #E03C31;
+            --indian-orange: #FF9933;
+            --saffron: #FF671F;
+            --black-deep: #0A0A0A;
+            --black-surface: #121212;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Background Image Layers with 70% Visibility */
+        .background-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            background: linear-gradient(145deg, #000000 70%, rgba(212, 175, 55, 0.05) 100%);
+        }
+        
+        .quiz-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            z-index: -9;
+        }
+        
+        .analysis-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            z-index: -9;
+        }
+        
+        .workout-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            z-index: -9;
+        }
+        
+        .modal-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            z-index: -9;
+        }
+
+        /* Question Popup Background */
+        .question-popup-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.9;
+            z-index: -9;
+        }
+
+        /* iPhone 12 Mini Optimization */
+        @media (max-width: 375px) {
+            .container { padding: 12px !important; }
+            h1 { font-size: 1.5rem !important; }
+            h2 { font-size: 1.25rem !important; }
+            .btn { padding: 12px 16px !important; font-size: 14px !important; }
+            .card { padding: 14px !important; }
+        }
+
+        /* Main Container */
+        .main-container {
+            background: rgba(10, 10, 10, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.9),
+                0 0 24px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* 3D Text Effects */
+        .text-3d-gold {
+            text-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.1),
+                0 2px 0 rgba(255, 255, 255, 0.05),
+                0 3px 0 rgba(212, 175, 55, 0.1),
+                0 4px 0 rgba(212, 175, 55, 0.1),
+                0 5px 0 rgba(212, 175, 55, 0.08),
+                0 6px 1px rgba(0, 0, 0, 0.1),
+                0 0 5px rgba(0, 0, 0, 0.1),
+                0 1px 3px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2),
+                0 5px 10px rgba(0, 0, 0, 0.25);
+            color: var(--gold-light);
+        }
+        
+        .text-3d-white {
+            text-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.1),
+                0 2px 0 rgba(255, 255, 255, 0.05),
+                0 3px 0 rgba(255, 255, 255, 0.05),
+                0 4px 0 rgba(255, 255, 255, 0.04),
+                0 5px 0 rgba(255, 255, 255, 0.03),
+                0 6px 1px rgba(0, 0, 0, 0.1),
+                0 0 5px rgba(0, 0, 0, 0.1),
+                0 1px 3px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2);
+            color: #ffffff;
+        }
+        
+        .text-3d-secondary {
+            text-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.05),
+                0 2px 0 rgba(255, 255, 255, 0.04),
+                0 3px 0 rgba(212, 175, 55, 0.08),
+                0 0 5px rgba(0, 0, 0, 0.1),
+                0 1px 3px rgba(0, 0, 0, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Gold Effects with 3D */
+        .gold-shimmer {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 25%, #FFFFFF 50%, var(--gold-primary) 75%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+            text-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.1),
+                0 2px 0 rgba(255, 255, 255, 0.05),
+                0 3px 0 rgba(212, 175, 55, 0.1);
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Desi Red-Gold Gradient */
+        .desi-gradient {
+            background: linear-gradient(135deg, var(--indian-red) 0%, var(--saffron) 50%, var(--gold-primary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
+
+        /* Buttons with 3D Effects */
+        .gold-btn {
+            background: linear-gradient(135deg, var(--gold-secondary) 0%, var(--gold-primary) 100%);
+            color: #000;
+            font-weight: 800;
+            border: none;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 4px 0 var(--gold-dark),
+                0 6px 10px rgba(212, 175, 55, 0.3),
+                0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .gold-btn:hover, .gold-btn:active {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 0 var(--gold-dark),
+                0 8px 15px rgba(212, 175, 55, 0.4),
+                0 12px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        .gold-btn:active {
+            transform: translateY(1px);
+            box-shadow: 
+                0 2px 0 var(--gold-dark),
+                0 3px 5px rgba(212, 175, 55, 0.3);
+        }
+        
+        .desi-btn {
+            background: linear-gradient(135deg, var(--indian-red) 0%, var(--saffron) 100%);
+            color: white;
+            font-weight: 800;
+            border: none;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 4px 0 #8B0000,
+                0 6px 10px rgba(224, 60, 49, 0.3),
+                0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .desi-btn:hover, .desi-btn:active {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 0 #8B0000,
+                0 8px 15px rgba(224, 60, 49, 0.4),
+                0 12px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        .secondary-btn {
+            background: rgba(20, 20, 20, 0.95);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: var(--gold-light);
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 3px 0 rgba(0, 0, 0, 0.3),
+                0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .secondary-btn:hover, .secondary-btn:active {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: var(--gold-primary);
+            box-shadow: 
+                0 4px 0 rgba(0, 0, 0, 0.3),
+                0 7px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .option-btn {
+            background: rgba(20, 20, 20, 0.95);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.2s ease;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 2px 0 rgba(0, 0, 0, 0.2),
+                0 3px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .option-btn:hover, .option-btn:active {
+            border-color: var(--gold-primary);
+            background: rgba(212, 175, 55, 0.12);
+            transform: translateY(-1px);
+            box-shadow: 
+                0 3px 0 rgba(0, 0, 0, 0.2),
+                0 5px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Workout Cards with 3D */
+        .workout-card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 3px 0 rgba(0, 0, 0, 0.2),
+                0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .workout-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 5px 0 rgba(0, 0, 0, 0.2),
+                0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .workout-card.current {
+            border-color: var(--gold-primary);
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(212, 175, 55, 0.18));
+            animation: pulse-glow 2s infinite;
+            box-shadow: 
+                0 4px 0 rgba(212, 175, 55, 0.3),
+                0 6px 15px rgba(212, 175, 55, 0.25),
+                0 0 20px rgba(212, 175, 55, 0.1);
+        }
+        
+        .workout-card.locked {
+            opacity: 0.4;
+            filter: grayscale(1);
+            pointer-events: none;
+        }
+        
+        .workout-card.completed {
+            border-color: #10B981;
+            background: rgba(16, 185, 129, 0.12);
+            box-shadow: 
+                0 3px 0 rgba(16, 185, 129, 0.3),
+                0 5px 10px rgba(16, 185, 129, 0.15);
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 
+                    0 4px 0 rgba(212, 175, 55, 0.3),
+                    0 6px 15px rgba(212, 175, 55, 0.25),
+                    0 0 20px rgba(212, 175, 55, 0.1);
+            }
+            50% { 
+                box-shadow: 
+                    0 4px 0 rgba(212, 175, 55, 0.3),
+                    0 6px 20px rgba(212, 175, 55, 0.35),
+                    0 0 25px rgba(212, 175, 55, 0.15);
+            }
+        }
+
+        /* Progress Bar with 3D */
+        .progress-bar {
+            background: linear-gradient(90deg, var(--saffron), var(--gold-primary));
+            background-size: 200% auto;
+            animation: shine 2s linear infinite;
+            height: 8px;
+            border-radius: 10px;
+            box-shadow: 
+                0 2px 0 rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        
+        .progress-bar-container {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.5),
+                0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        /* Badges with 3D */
+        .badge {
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+        }
+        
+        .badge-gold {
+            background: linear-gradient(135deg, var(--gold-secondary), var(--gold-primary));
+            color: black;
+            box-shadow: 
+                0 3px 0 var(--gold-dark),
+                0 5px 10px rgba(212, 175, 55, 0.2);
+        }
+        
+        .badge-desi {
+            background: linear-gradient(135deg, var(--indian-red), var(--saffron));
+            color: white;
+            box-shadow: 
+                0 3px 0 #8B0000,
+                0 5px 10px rgba(224, 60, 49, 0.3);
+        }
+
+        /* Video Container - Custom Player with 3D - 16:9 Aspect Ratio */
+        .video-container {
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--gold-primary);
+            position: relative;
+            box-shadow: 
+                0 8px 0 rgba(0, 0, 0, 0.4),
+                0 15px 30px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        /* 16:9 Aspect Ratio Container */
+        .aspect-ratio-16-9 {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio (9/16 = 0.5625) */
+        }
+
+        .aspect-ratio-16-9 iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Category Tags with 3D */
+        .category-tag {
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 8px;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 2px 0 rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .desi-tag {
+            background: rgba(224, 60, 49, 0.2);
+            color: var(--indian-orange);
+            border: 1px solid rgba(255, 153, 51, 0.4);
+            box-shadow: 
+                0 2px 0 rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(224, 60, 49, 0.2);
+        }
+
+        /* Solution Highlight with 3D */
+        .solution-highlight {
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.2), transparent);
+            border-left: 3px solid var(--gold-primary);
+            box-shadow: 
+                0 3px 0 rgba(0, 0, 0, 0.2),
+                0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Safe Areas */
+        .safe-area-top { padding-top: env(safe-area-inset-top); }
+        .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Workout Status with 3D */
+        .workout-status {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+        }
+        
+        .status-current { 
+            background: rgba(212, 175, 55, 0.25); 
+            color: var(--gold-light); 
+            box-shadow: 0 2px 0 rgba(212, 175, 55, 0.3);
+        }
+        .status-completed { 
+            background: rgba(16, 185, 129, 0.25); 
+            color: #10B981; 
+            box-shadow: 0 2px 0 rgba(16, 185, 129, 0.3);
+        }
+
+        /* Number Indicators with 3D */
+        .number-indicator {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 3px 0 rgba(0, 0, 0, 0.3),
+                0 5px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .number-current {
+            background: linear-gradient(135deg, var(--saffron), var(--gold-primary));
+            color: black;
+            animation: pulse 2s infinite;
+            box-shadow: 
+                0 3px 0 var(--gold-dark),
+                0 5px 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        .number-completed {
+            background: #10B981;
+            color: white;
+            box-shadow: 
+                0 3px 0 #0A8F6E,
+                0 5px 10px rgba(16, 185, 129, 0.3);
+        }
+        
+        .number-locked {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 2px 0 rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 
+                    0 3px 0 var(--gold-dark),
+                    0 5px 10px rgba(212, 175, 55, 0.3);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 
+                    0 4px 0 var(--gold-dark),
+                    0 7px 15px rgba(212, 175, 55, 0.4);
+            }
+        }
+
+        /* Question Text with Enhanced Visibility */
+        .question-text {
+            text-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.1),
+                0 2px 0 rgba(255, 255, 255, 0.05),
+                0 0 10px rgba(212, 175, 55, 0.2),
+                0 0 20px rgba(212, 175, 55, 0.1);
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+        
+        .hint-text {
+            text-shadow: 
+                0 1px 0 rgba(0, 0, 0, 0.5),
+                0 0 5px rgba(212, 175, 55, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Section Labels */
+        .section-label {
+            text-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.1),
+                0 2px 0 rgba(212, 175, 55, 0.1),
+                0 0 8px rgba(212, 175, 55, 0.2);
+            color: var(--gold-light);
+            letter-spacing: 0.08em;
+        }
+
+        /* Score Display with 3D */
+        .score-display {
+            text-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.1),
+                0 2px 0 rgba(255, 255, 255, 0.05),
+                0 3px 0 rgba(212, 175, 55, 0.15),
+                0 4px 0 rgba(212, 175, 55, 0.1),
+                0 0 15px rgba(212, 175, 55, 0.3);
+            font-weight: 900;
+        }
+
+        /* Responsive Backgrounds */
+        @media (max-width: 768px) {
+            .quiz-background,
+            .analysis-background,
+            .workout-background,
+            .modal-background,
+            .question-popup-bg {
+                background-attachment: scroll;
+                opacity: 0.7 !important;
+            }
+            
+            .quiz-background::before,
+            .analysis-background::before,
+            .workout-background::before,
+            .modal-background::before,
+            .question-popup-bg::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.3);
+                z-index: -1;
+            }
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--saffron), var(--gold-primary));
+            border-radius: 10px;
+        }
+
+        /* Glass Effect for Cards */
+        .glass-effect {
+            background: rgba(15, 15, 15, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ensure text is readable on background */
+        .text-on-bg {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Question Popup Container */
+        .question-popup-container {
+            background: rgba(10, 10, 10, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.9),
+                0 0 24px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+        }
+
+        /* Enhanced vertical scrolling */
+        .scrollable-content {
+            max-height: 70vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Workout list with better scrolling */
+        .workout-list-container {
+            max-height: 50vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        /* Desi Style Elements */
+        .desi-border {
+            border: 2px solid var(--saffron);
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(255, 103, 31, 0.3);
+        }
+        
+        .desi-glow {
+            box-shadow: 0 0 20px rgba(255, 103, 31, 0.4),
+                        0 0 40px rgba(255, 153, 51, 0.2);
+        }
+        
+        .heart-rate-pulse {
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-0">
+    <!-- Background Layers - All with 70% opacity -->
+    <div class="background-layer"></div>
+    <div class="quiz-background" id="quiz-bg"></div>
+    <div class="analysis-background hidden" id="analysis-bg"></div>
+    <div class="workout-background hidden" id="workout-bg"></div>
+    
+    <div class="w-full min-h-screen safe-area-top safe-area-bottom flex items-center justify-center px-3 text-on-bg">
+        <div class="w-full max-w-md main-container rounded-xl p-4 fade-in">
+            
+            <!-- Header -->
+            <header class="text-center mb-6">
+                <div class="flex justify-center mb-4">
+                    <!-- Indian flag inspired logo -->
+                    <div class="relative">
+                        
+                <h1 class="text-2xl font-black text-3d-gold mb-2 tracking-tight">DESI MEHNAT</h1>
+                <p class="text-xs text-gold-light/80 font-bold uppercase tracking-wider text-3d-secondary">INDIAN-STYLE CARDIO FITNESS</p>
+                <div class="flex justify-center mt-2 gap-1">
+                    <div class="w-3 h-3 rounded-full bg-saffron"></div>
+                    <div class="w-3 h-3 rounded-full bg-white"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+            </header>
+
+            <!-- Main Content - Scrollable Area -->
+            <div class="scrollable-content custom-scrollbar">
+                <main id="app-content" class="mb-4">
+                    <!-- Progress -->
+                    <div id="progress-section" class="mb-5">
+                        <div class="flex justify-between items-center mb-2">
+                            <span id="step-label" class="text-xs font-bold section-label uppercase tracking-wider">Fitness Assessment</span>
+                            <span id="question-counter" class="text-xs font-bold text-gold-light text-3d-secondary">1/50</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div id="progress-bar" class="progress-bar w-5"></div>
+                        </div>
+                        <p id="progress-text" class="text-xs text-gray-300 mt-1.5 text-center text-3d-secondary">Comprehensive cardio fitness evaluation...</p>
+                    </div>
+
+                    <!-- Quiz Section -->
+                    <div id="quiz-section" class="fade-in">
+                        <div class="mb-5">
+                            <h2 id="question-text" class="text-lg font-bold question-text mb-3"></h2>
+                            <p id="question-hint" class="text-xs hint-text hidden"></p>
+                        </div>
+                        <div id="options-container" class="space-y-2.5"></div>
+                    </div>
+
+                    <!-- Analysis Section -->
+                    <div id="analysis-section" class="hidden">
+                        <div class="text-center mb-5">
+                            <h2 class="text-xl font-black desi-gradient mb-2">Assessment Complete!</h2>
+                            <p class="text-xs text-gold-light/80 font-bold mb-4 text-3d-secondary">Your Desi Cardio Fitness Report</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-3 gap-3 mb-4">
+                            <div class="glass-effect p-4 rounded-lg border border-gold-primary/15 text-center">
+                                <div class="text-xs uppercase text-gray-400 mb-2 text-3d-secondary">Cardio Level</div>
+                                <div id="cardio-score" class="text-lg font-black score-display">--</div>
+                            </div>
+                            <div class="glass-effect p-4 rounded-lg border border-gold-primary/15 text-center">
+                                <div class="text-xs uppercase text-gray-400 mb-2 text-3d-secondary">Strength Level</div>
+                                <div id="strength-score" class="text-lg font-black score-display">--</div>
+                            </div>
+                            <div class="glass-effect p-4 rounded-lg border border-gold-primary/15 text-center">
+                                <div class="text-xs uppercase text-gray-400 mb-2 text-3d-secondary">Program Length</div>
+                                <div id="program-score" class="text-lg font-black score-display">--</div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-effect p-4 rounded-lg border border-gold-primary/15 mb-5 solution-highlight">
+                            <h3 class="text-sm font-bold text-white mb-2 flex items-center text-3d-white">
+                                <i class="fas fa-heartbeat text-red-500 mr-2 heart-rate-pulse"></i> Desi Cardio Solution
+                            </h3>
+                            <p id="analysis-text" class="text-sm text-gray-300 leading-relaxed text-3d-secondary">
+                                Analyzing your 50-point assessment for desi-style workout program...
+                            </p>
+                            <div id="solution-points" class="mt-3 space-y-2"></div>
+                        </div>
+                        
+                        <button onclick="showWorkoutProgram()" class="w-full desi-btn py-3.5 rounded-lg text-sm font-bold">
+                            <i class="fas fa-dumbbell mr-2"></i> View Desi Cardio Protocol
+                        </button>
+                    </div>
+
+                    <!-- Workout Program Section -->
+                    <div id="workout-section" class="hidden">
+                        <div class="flex justify-between items-center mb-4">
+                            <div>
+                                <h2 class="text-lg font-bold text-3d-white mb-1.5">Desi Cardio Protocol</h2>
+                                <div class="flex items-center">
+                                    <span class="badge badge-desi mr-2">Day <span id="current-day">1</span>/30</span>
+                                    <span id="completion-stats" class="text-xs text-gray-400 text-3d-secondary">0/6 completed</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></div>
+                                    <span class="text-xs text-red-400 font-bold text-3d-secondary">Current</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 p-3.5 bg-gradient-to-r from-black/50 to-red-900/10 rounded-lg border border-red-500/15 glass-effect">
+                            <h3 class="text-sm font-bold text-white mb-1.5 flex items-center text-3d-white">
+                                <i class="fas fa-fire text-red-500 mr-2"></i> Desi Workout Rules
+                            </h3>
+                            <p class="text-xs text-gray-300 text-3d-secondary">Complete exercises in prescribed order. Watch each video fully before proceeding.</p>
+                        </div>
+                        
+                        <div id="workout-list" class="workout-list-container space-y-3 pr-1.5 pb-2 custom-scrollbar"></div>
+                        
+                        <button onclick="restartAssessment()" class="w-full mt-4 py-3 bg-black/50 border border-red-500/30 text-red-400 rounded-lg text-sm font-bold glass-effect">
+                            <i class="fas fa-redo mr-2"></i> New Assessment
+                        </button>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal with Next Button - VERTICALLY CENTERED -->
+    <div id="video-modal" class="fixed inset-0 z-50 hidden flex flex-col items-center justify-center p-3">
+        <!-- Modal Background -->
+        <div class="modal-background"></div>
+        
+        <!-- Vertical Centering Container -->
+        <div class="flex-1 flex flex-col items-center justify-center w-full">
+            <div class="w-full max-w-md z-10 text-on-bg">
+                <div class="video-container">
+                    <div class="relative">
+                        <button onclick="closeVideoModal()" class="absolute top-3 right-3 z-20 bg-black/90 p-2.5 rounded-full border border-gold-primary/20">
+                            <i class="fas fa-times text-white text-sm"></i>
+                        </button>
+                        <!-- 16:9 Aspect Ratio Container -->
+                        <div class="aspect-ratio-16-9" id="video-frame">
+                            <!-- YouTube iframe will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4 p-4 bg-black/95 rounded-lg border border-red-500/20 glass-effect desi-glow">
+                    <h3 id="video-title" class="text-sm font-bold text-white mb-2 text-3d-white"></h3>
+                    <p id="video-description" class="text-xs text-gray-300 mb-3 text-3d-secondary"></p>
+                    <div class="flex items-center justify-between text-xs text-gray-400 mb-4">
+                        <span class="flex items-center"><i class="fas fa-clock mr-1.5"></i> Duration: <span id="video-duration" class="font-bold ml-1">5:00</span></span>
+                        <span class="flex items-center"><i class="fas fa-redo mr-1.5"></i> Sets: <span id="video-sets" class="font-bold ml-1">3x</span></span>
+                        <span class="desi-tag" id="video-category"></span>
+                    </div>
+                    
+                    <div id="solution-benefit" class="mb-4 p-3 rounded bg-black/60 border border-red-500/15">
+                        <div class="flex items-center mb-1.5">
+                            <i class="fas fa-fire text-red-500 mr-2"></i>
+                            <span class="text-xs font-bold text-red-400 text-3d-secondary">Desi Benefit:</span>
+                        </div>
+                        <p id="solution-text" class="text-xs text-gray-300 text-3d-secondary"></p>
+                    </div>
+                    
+                    <div class="flex gap-3">
+                        <button onclick="repeatCurrentVideo()" class="flex-1 secondary-btn py-3 rounded-lg text-sm font-bold">
+                            <i class="fas fa-redo mr-1.5"></i> Repeat
+                        </button>
+                        <button onclick="nextVideo()" class="flex-1 desi-btn py-3 rounded-lg text-sm font-bold">
+                            Next <i class="fas fa-arrow-right ml-1.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // ==================== STATE MANAGEMENT ====================
+    let appState = {
+        currentQuestion: 0,
+        gender: null,
+        age: null,
+        fitnessGoal: null,
+        currentFitness: null,
+        experience: null,
+        healthIssues: [],
+        scores: { cardio: 0, strength: 0, endurance: 0, flexibility: 0, fatLoss: 0, stamina: 0 },
+        currentDay: 1,
+        completedWorkouts: [],
+        totalQuestions: 50,
+        selectedCategory: null,
+        selectedWorkouts: [],
+        currentVideoIndex: 0,
+        userProfile: {},
+        dayProgress: {},
+        dayWorkouts: {}
+    };
+
+    // ==================== COMPREHENSIVE DESI WORKOUT LIBRARY ====================
+    const workoutLibrary = {
+        // 1️⃣ BASIC DESI CARDIO (12 workouts)
+        basic_cardio: [
+            {
+                id: "BC1",
+                name: "Desi Spot Jogging",
+                description: "Traditional Indian spot running",
+                category: "basic_cardio",
+                subcategory: "jogging",
+                difficulty: "beginner",
+                duration: "10:00",
+                sets: "3 × 3 min",
+                videoCode: "9X5_U4D1uDk",
+                benefit: "Improves heart health, basic endurance",
+                solution: "Foundation for all cardio workouts",
+                intensity: "low",
+                calories: "80-100"
+            },
+            {
+                id: "BC2",
+                name: "Bhangra Cardio",
+                description: "Punjabi dance cardio workout",
+                category: "basic_cardio",
+                subcategory: "dance",
+                difficulty: "beginner",
+                duration: "12:00",
+                sets: "4 × 3 min",
+                videoCode: "fD3XitN08nQ",
+                benefit: "Fun cardio, improves coordination",
+                solution: "Cultural dance for fitness",
+                intensity: "medium",
+                calories: "100-120"
+            },
+            {
+                id: "BC3",
+                name: "Garba Steps Cardio",
+                description: "Gujarati folk dance cardio",
+                category: "basic_cardio",
+                subcategory: "dance",
+                difficulty: "beginner",
+                duration: "11:00",
+                sets: "4 × 2.5 min",
+                videoCode: "ub3X7mC-7i4",
+                benefit: "Rhythmic cardio, leg endurance",
+                solution: "Traditional dance workout",
+                intensity: "medium",
+                calories: "90-110"
+            },
+            {
+                id: "BC4",
+                name: "Desi Jumping Jacks",
+                description: "Indian-style jumping exercise",
+                category: "basic_cardio",
+                subcategory: "jumping",
+                difficulty: "beginner",
+                duration: "8:00",
+                sets: "4 × 2 min",
+                videoCode: "bQ8p8pL2eH4",
+                benefit: "Full body cardio, coordination",
+                solution: "Basic jumping cardio",
+                intensity: "medium",
+                calories: "70-90"
+            },
+            {
+                id: "BC5",
+                name: "Kalaripayattu Warmup",
+                description: "Ancient Indian martial arts cardio",
+                category: "basic_cardio",
+                subcategory: "martial",
+                difficulty: "beginner",
+                duration: "15:00",
+                sets: "5 × 3 min",
+                videoCode: "zQpGZfWqWw4",
+                benefit: "Improves flexibility and cardio",
+                solution: "Traditional martial arts workout",
+                intensity: "medium",
+                calories: "120-150"
+            },
+            {
+                id: "BC6",
+                name: "Desi High Knees",
+                description: "Indian-style high knees",
+                category: "basic_cardio",
+                subcategory: "legs",
+                difficulty: "beginner",
+                duration: "9:00",
+                sets: "4 × 2 min",
+                videoCode: "Lx7p6Y2qJq4",
+                benefit: "Leg endurance, heart rate up",
+                solution: "Basic leg cardio",
+                intensity: "medium",
+                calories: "80-100"
+            },
+            {
+                id: "BC7",
+                name: "Bollywood Dance Cardio",
+                description: "Bollywood movie dance cardio",
+                category: "basic_cardio",
+                subcategory: "dance",
+                difficulty: "beginner",
+                duration: "13:00",
+                sets: "3 × 4 min",
+                videoCode: "mN3p7q4VvT4",
+                benefit: "Fun cardio, improves mood",
+                solution: "Entertaining dance workout",
+                intensity: "medium",
+                calories: "110-130"
+            },
+            {
+                id: "BC8",
+                name: "Desi Butt Kicks",
+                description: "Indian-style butt kick cardio",
+                category: "basic_cardio",
+                subcategory: "legs",
+                difficulty: "beginner",
+                duration: "8:00",
+                sets: "4 × 2 min",
+                videoCode: "pQrR7qRqRq4",
+                benefit: "Hamstring activation, cardio",
+                solution: "Back leg cardio",
+                intensity: "low",
+                calories: "60-80"
+            },
+            {
+                id: "BC9",
+                name: "Yoga Flow Cardio",
+                description: "Fast-paced yoga sequences",
+                category: "basic_cardio",
+                subcategory: "yoga",
+                difficulty: "beginner",
+                duration: "14:00",
+                sets: "4 × 3.5 min",
+                videoCode: "qWrR7qRqRq4",
+                benefit: "Cardio with flexibility",
+                solution: "Yoga-based cardio",
+                intensity: "medium",
+                calories: "100-120"
+            },
+            {
+                id: "BC10",
+                name: "Desi Shadow Boxing",
+                description: "Indian-style boxing cardio",
+                category: "basic_cardio",
+                subcategory: "martial",
+                difficulty: "beginner",
+                duration: "10:00",
+                sets: "5 × 2 min",
+                videoCode: "rWrR7qRqRq4",
+                benefit: "Upper body cardio, coordination",
+                solution: "Boxing cardio workout",
+                intensity: "medium",
+                calories: "90-110"
+            },
+            {
+                id: "BC11",
+                name: "Laughter Yoga Cardio",
+                description: "Laughter exercises for cardio",
+                category: "basic_cardio",
+                subcategory: "yoga",
+                difficulty: "beginner",
+                duration: "12:00",
+                sets: "4 × 3 min",
+                videoCode: "sWrR7qRqRq4",
+                benefit: "Stress relief with cardio",
+                solution: "Fun laughter workout",
+                intensity: "low",
+                calories: "70-90"
+            },
+            {
+                id: "BC12",
+                name: "Desi Marching",
+                description: "Indian parade-style marching",
+                category: "basic_cardio",
+                subcategory: "marching",
+                difficulty: "beginner",
+                duration: "11:00",
+                sets: "4 × 2.5 min",
+                videoCode: "tWrR7qRqRq4",
+                benefit: "Low impact cardio, endurance",
+                solution: "Gentle marching cardio",
+                intensity: "low",
+                calories: "60-80"
+            }
+        ],
+
+        // 2️⃣ INTERMEDIATE DESI WORKOUTS (10 workouts)
+        intermediate: [
+            {
+                id: "I1",
+                name: "Desi Burpees",
+                description: "Indian-style full body exercise",
+                category: "intermediate",
+                subcategory: "full_body",
+                difficulty: "intermediate",
+                duration: "15:00",
+                sets: "4 × 3.5 min",
+                videoCode: "sWrR7qRqRq4",
+                benefit: "Full body strength and cardio",
+                solution: "High intensity desi workout",
+                intensity: "high",
+                calories: "150-180"
+            },
+            {
+                id: "I2",
+                name: "Mountain Climbers Desi Style",
+                description: "Fast-paced leg cardio",
+                category: "intermediate",
+                subcategory: "legs",
+                difficulty: "intermediate",
+                duration: "12:00",
+                sets: "5 × 2.5 min",
+                videoCode: "tWrR7qRqRq4",
+                benefit: "Core and leg endurance",
+                solution: "Core-focused cardio",
+                intensity: "high",
+                calories: "130-150"
+            },
+            {
+                id: "I3",
+                name: "Desi Jump Squats",
+                description: "Indian-style explosive squats",
+                category: "intermediate",
+                subcategory: "legs",
+                difficulty: "intermediate",
+                duration: "14:00",
+                sets: "4 × 3.5 min",
+                videoCode: "uWrR7qRqRq4",
+                benefit: "Leg power and cardio",
+                solution: "Explosive leg training",
+                intensity: "high",
+                calories: "140-170"
+            },
+            {
+                id: "I4",
+                name: "Dand-Baithak Marathon",
+                description: "Traditional Indian pushup-squat combo",
+                category: "intermediate",
+                subcategory: "full_body",
+                difficulty: "intermediate",
+                duration: "16:00",
+                sets: "5 × 3 min",
+                videoCode: "vWrR7qRqRq4",
+                benefit: "Traditional strength and cardio",
+                solution: "Classic Indian workout",
+                intensity: "high",
+                calories: "160-190"
+            },
+            {
+                id: "I5",
+                name: "Kushti Warmup Cardio",
+                description: "Indian wrestling warmup exercises",
+                category: "intermediate",
+                subcategory: "martial",
+                difficulty: "intermediate",
+                duration: "18:00",
+                sets: "6 × 3 min",
+                videoCode: "wWrR7qRqRq4",
+                benefit: "Full body endurance",
+                solution: "Wrestling-inspired cardio",
+                intensity: "high",
+                calories: "180-210"
+            },
+            {
+                id: "I6",
+                name: "Desi Plank Jacks",
+                description: "Plank position jumping jacks",
+                category: "intermediate",
+                subcategory: "core",
+                difficulty: "intermediate",
+                duration: "13:00",
+                sets: "5 × 2.5 min",
+                videoCode: "xWrR7qRqRq4",
+                benefit: "Core stability with cardio",
+                solution: "Core cardio combination",
+                intensity: "high",
+                calories: "120-140"
+            },
+            {
+                id: "I7",
+                name: "Surya Namaskar Fast Flow",
+                description: "Rapid sun salutation sequence",
+                category: "intermediate",
+                subcategory: "yoga",
+                difficulty: "intermediate",
+                duration: "15:00",
+                sets: "5 × 3 min",
+                videoCode: "yWrR7qRqRq4",
+                benefit: "Yoga cardio, full body flow",
+                solution: "Fast yoga sequence",
+                intensity: "medium",
+                calories: "130-150"
+            },
+            {
+                id: "I8",
+                name: "Desi Skipping Variations",
+                description: "Indian rope skipping styles",
+                category: "intermediate",
+                subcategory: "jumping",
+                difficulty: "intermediate",
+                duration: "14:00",
+                sets: "5 × 3 min",
+                videoCode: "zWrR7qRqRq4",
+                benefit: "Coordination and cardio",
+                solution: "Skipping rope cardio",
+                intensity: "high",
+                calories: "140-160"
+            },
+            {
+                id: "I9",
+                name: "Bharatanatyam Cardio",
+                description: "Classical dance cardio workout",
+                category: "intermediate",
+                subcategory: "dance",
+                difficulty: "intermediate",
+                duration: "16:00",
+                sets: "4 × 4 min",
+                videoCode: "aXrR7qRqRq4",
+                benefit: "Artistic expression with cardio",
+                solution: "Classical dance fitness",
+                intensity: "medium",
+                calories: "150-170"
+            },
+            {
+                id: "I10",
+                name: "Desi Ladder Drills",
+                description: "Agility ladder Indian style",
+                category: "intermediate",
+                subcategory: "agility",
+                difficulty: "intermediate",
+                duration: "12:00",
+                sets: "6 × 2 min",
+                videoCode: "bXrR7qRqRq4",
+                benefit: "Footwork and agility",
+                solution: "Speed and coordination",
+                intensity: "medium",
+                calories: "110-130"
+            }
+        ],
+
+        // 3️⃣ ADVANCED DESI CARDIO (8 workouts)
+        advanced: [
+            {
+                id: "A1",
+                name: "Desi Tabata Protocol",
+                description: "High intensity interval training",
+                category: "advanced",
+                subcategory: "hiit",
+                difficulty: "advanced",
+                duration: "20:00",
+                sets: "8 × 2.5 min",
+                videoCode: "aXrR7qRqRq4",
+                benefit: "Maximum calorie burn",
+                solution: "High intensity desi cardio",
+                intensity: "very high",
+                calories: "200-250"
+            },
+            {
+                id: "A2",
+                name: "Kalaripayattu Cardio Flow",
+                description: "Martial arts advanced sequences",
+                category: "advanced",
+                subcategory: "martial",
+                difficulty: "advanced",
+                duration: "22:00",
+                sets: "6 × 3.5 min",
+                videoCode: "bXrR7qRqRq4",
+                benefit: "Advanced flexibility and strength",
+                solution: "Martial arts cardio",
+                intensity: "very high",
+                calories: "220-270"
+            },
+            {
+                id: "A3",
+                name: "Desi Spartan Training",
+                description: "Military-style Indian cardio",
+                category: "advanced",
+                subcategory: "military",
+                difficulty: "advanced",
+                duration: "25:00",
+                sets: "5 × 5 min",
+                videoCode: "cXrR7qRqRq4",
+                benefit: "Extreme endurance building",
+                solution: "Military fitness training",
+                intensity: "very high",
+                calories: "250-300"
+            },
+            {
+                id: "A4",
+                name: "Advanced Bollywood Choreo",
+                description: "Complex dance cardio sequences",
+                category: "advanced",
+                subcategory: "dance",
+                difficulty: "advanced",
+                duration: "18:00",
+                sets: "4 × 4.5 min",
+                videoCode: "dXrR7qRqRq4",
+                benefit: "Coordination and endurance",
+                solution: "Advanced dance fitness",
+                intensity: "high",
+                calories: "180-220"
+            },
+            {
+                id: "A5",
+                name: "Desi Circuit Training",
+                description: "Non-stop exercise circuit",
+                category: "advanced",
+                subcategory: "circuit",
+                difficulty: "advanced",
+                duration: "24:00",
+                sets: "6 × 4 min",
+                videoCode: "eXrR7qRqRq4",
+                benefit: "Full body conditioning",
+                solution: "Circuit training Indian style",
+                intensity: "very high",
+                calories: "230-280"
+            },
+            {
+                id: "A6",
+                name: "Pranayama Power Cardio",
+                description: "Breath-controlled intense workout",
+                category: "advanced",
+                subcategory: "yoga",
+                difficulty: "advanced",
+                duration: "20:00",
+                sets: "5 × 4 min",
+                videoCode: "fXrR7qRqRq4",
+                benefit: "Breath control with cardio",
+                solution: "Breathing-focused workout",
+                intensity: "high",
+                calories: "190-230"
+            },
+            {
+                id: "A7",
+                name: "Desi Battle Rope Waves",
+                description: "Indian-style rope training",
+                category: "advanced",
+                subcategory: "strength",
+                difficulty: "advanced",
+                duration: "15:00",
+                sets: "6 × 2.5 min",
+                videoCode: "gXrR7qRqRq4",
+                benefit: "Upper body power and cardio",
+                solution: "Rope training cardio",
+                intensity: "very high",
+                calories: "170-210"
+            },
+            {
+                id: "A8",
+                name: "Advanced Dand Progression",
+                description: "Traditional Indian pushup variations",
+                category: "advanced",
+                subcategory: "strength",
+                difficulty: "advanced",
+                duration: "22:00",
+                sets: "5 × 4.5 min",
+                videoCode: "hXrR7qRqRq4",
+                benefit: "Advanced upper body strength",
+                solution: "Traditional strength training",
+                intensity: "very high",
+                calories: "210-260"
+            }
+        ],
+
+        // 4️⃣ DESI STRENGTH CARDIO (8 workouts)
+        strength_cardio: [
+            {
+                id: "SC1",
+                name: "Desi Kettlebell Swings",
+                description: "Indian-style kettlebell exercises",
+                category: "strength_cardio",
+                subcategory: "kettlebell",
+                difficulty: "intermediate",
+                duration: "16:00",
+                sets: "5 × 3 min",
+                videoCode: "gXrR7qRqRq4",
+                benefit: "Power development, full body",
+                solution: "Kettlebell cardio",
+                intensity: "high",
+                calories: "160-190"
+            },
+            {
+                id: "SC2",
+                name: "Lathi Cardio Training",
+                description: "Traditional stick fighting cardio",
+                category: "strength_cardio",
+                subcategory: "martial",
+                difficulty: "intermediate",
+                duration: "18:00",
+                sets: "6 × 3 min",
+                videoCode: "hXrR7qRqRq4",
+                benefit: "Upper body strength and cardio",
+                solution: "Stick training workout",
+                intensity: "high",
+                calories: "170-200"
+            },
+            {
+                id: "SC3",
+                name: "Desi Sandbag Training",
+                description: "Traditional weight training",
+                category: "strength_cardio",
+                subcategory: "strength",
+                difficulty: "intermediate",
+                duration: "20:00",
+                sets: "5 × 4 min",
+                videoCode: "iXrR7qRqRq4",
+                benefit: "Functional strength building",
+                solution: "Sandbag cardio workout",
+                intensity: "high",
+                calories: "180-220"
+            },
+            {
+                id: "SC4",
+                name: "Indian Club Swinging",
+                description: "Traditional club exercises",
+                category: "strength_cardio",
+                subcategory: "strength",
+                difficulty: "intermediate",
+                duration: "15:00",
+                sets: "6 × 2.5 min",
+                videoCode: "jXrR7qRqRq4",
+                benefit: "Shoulder mobility and strength",
+                solution: "Club training cardio",
+                intensity: "medium",
+                calories: "140-170"
+            },
+            {
+                id: "SC5",
+                name: "Desi Farmer's Walk",
+                description: "Carrying weight Indian style",
+                category: "strength_cardio",
+                subcategory: "strength",
+                difficulty: "intermediate",
+                duration: "14:00",
+                sets: "4 × 3.5 min",
+                videoCode: "kXrR7qRqRq4",
+                benefit: "Grip strength and endurance",
+                solution: "Carrying cardio workout",
+                intensity: "medium",
+                calories: "130-160"
+            },
+            {
+                id: "SC6",
+                name: "Stone Lifting Cardio",
+                description: "Traditional stone training",
+                category: "strength_cardio",
+                subcategory: "strength",
+                difficulty: "advanced",
+                duration: "22:00",
+                sets: "5 × 4.5 min",
+                videoCode: "lXrR7qRqRq4",
+                benefit: "Raw power development",
+                solution: "Stone training workout",
+                intensity: "very high",
+                calories: "210-260"
+            },
+            {
+                id: "SC7",
+                name: "Desi Rope Climbing",
+                description: "Traditional rope exercises",
+                category: "strength_cardio",
+                subcategory: "strength",
+                difficulty: "advanced",
+                duration: "20:00",
+                sets: "4 × 5 min",
+                videoCode: "mXrR7qRqRq4",
+                benefit: "Upper body power",
+                solution: "Rope climbing cardio",
+                intensity: "very high",
+                calories: "190-240"
+            },
+            {
+                id: "SC8",
+                name: "Indian Wrestler's Cardio",
+                description: "Pehlwani training exercises",
+                category: "strength_cardio",
+                subcategory: "martial",
+                difficulty: "advanced",
+                duration: "25:00",
+                sets: "6 × 4 min",
+                videoCode: "nXrR7qRqRq4",
+                benefit: "Extreme endurance and strength",
+                solution: "Wrestling cardio training",
+                intensity: "very high",
+                calories: "240-290"
+            }
+        ],
+
+        // 5️⃣ DESI FAT BURNING (8 workouts)
+        fat_burning: [
+            {
+                id: "FB1",
+                name: "Desi HIIT Blast",
+                description: "High intensity fat burning",
+                category: "fat_burning",
+                subcategory: "hiit",
+                difficulty: "intermediate",
+                duration: "18:00",
+                sets: "8 × 2 min",
+                videoCode: "mXrR7qRqRq4",
+                benefit: "Maximum fat burn",
+                solution: "HIIT for weight loss",
+                intensity: "very high",
+                calories: "200-240"
+            },
+            {
+                id: "FB2",
+                name: "Belly Fat Burner Cardio",
+                description: "Targeted abdominal fat loss",
+                category: "fat_burning",
+                subcategory: "core",
+                difficulty: "intermediate",
+                duration: "16:00",
+                sets: "6 × 2.5 min",
+                videoCode: "nXrR7qRqRq4",
+                benefit: "Core fat reduction",
+                solution: "Abdominal fat burning",
+                intensity: "high",
+                calories: "170-200"
+            },
+            {
+                id: "FB3",
+                name: "Desi Metabolic Conditioning",
+                description: "Boost metabolism Indian style",
+                category: "fat_burning",
+                subcategory: "metabolic",
+                difficulty: "intermediate",
+                duration: "20:00",
+                sets: "5 × 4 min",
+                videoCode: "oXrR7qRqRq4",
+                benefit: "Increased metabolic rate",
+                solution: "Metabolism boosting workout",
+                intensity: "high",
+                calories: "190-230"
+            },
+            {
+                id: "FB4",
+                name: "Thigh Fat Burner Cardio",
+                description: "Leg fat reduction workout",
+                category: "fat_burning",
+                subcategory: "legs",
+                difficulty: "intermediate",
+                duration: "17:00",
+                sets: "6 × 3 min",
+                videoCode: "pXrR7qRqRq4",
+                benefit: "Leg fat burning",
+                solution: "Lower body fat loss",
+                intensity: "high",
+                calories: "180-210"
+            },
+            {
+                id: "FB5",
+                name: "Desi Arm Fat Blaster",
+                description: "Arm fat reduction cardio",
+                category: "fat_burning",
+                subcategory: "arms",
+                difficulty: "intermediate",
+                duration: "15:00",
+                sets: "5 × 3 min",
+                videoCode: "qXrR7qRqRq4",
+                benefit: "Arm fat burning",
+                solution: "Upper body fat loss",
+                intensity: "medium",
+                calories: "150-180"
+            },
+            {
+                id: "FB6",
+                name: "Full Body Fat Burn",
+                description: "Complete fat burning workout",
+                category: "fat_burning",
+                subcategory: "full_body",
+                difficulty: "advanced",
+                duration: "22:00",
+                sets: "6 × 3.5 min",
+                videoCode: "rXrR7qRqRq4",
+                benefit: "Total body fat reduction",
+                solution: "Complete fat burning",
+                intensity: "very high",
+                calories: "220-270"
+            },
+            {
+                id: "FB7",
+                name: "Desi Afterburn Cardio",
+                description: "EPOC maximizing workout",
+                category: "fat_burning",
+                subcategory: "hiit",
+                difficulty: "advanced",
+                duration: "20:00",
+                sets: "7 × 3 min",
+                videoCode: "sXrR7qRqRq4",
+                benefit: "Continued calorie burn",
+                solution: "Afterburn effect workout",
+                intensity: "very high",
+                calories: "210-260"
+            },
+            {
+                id: "FB8",
+                name: "Indian Fasting Cardio",
+                description: "Optimized fasting workout",
+                category: "fat_burning",
+                subcategory: "fasting",
+                difficulty: "intermediate",
+                duration: "18:00",
+                sets: "6 × 3 min",
+                videoCode: "tXrR7qRqRq4",
+                benefit: "Enhanced fat utilization",
+                solution: "Fasting-optimized cardio",
+                intensity: "medium",
+                calories: "160-190"
+            }
+        ],
+
+        // 6️⃣ DESI AGILITY & COORDINATION (8 workouts)
+        agility: [
+            {
+                id: "AG1",
+                name: "Desi Ladder Drills Pro",
+                description: "Advanced footwork patterns",
+                category: "agility",
+                subcategory: "footwork",
+                difficulty: "intermediate",
+                duration: "14:00",
+                sets: "8 × 1.5 min",
+                videoCode: "rXrR7qRqRq4",
+                benefit: "Improved foot speed",
+                solution: "Advanced footwork training",
+                intensity: "medium",
+                calories: "120-150"
+            },
+            {
+                id: "AG2",
+                name: "Kabbadi Agility Drills",
+                description: "Traditional sport training",
+                category: "agility",
+                subcategory: "sport",
+                difficulty: "intermediate",
+                duration: "16:00",
+                sets: "6 × 2.5 min",
+                videoCode: "sXrR7qRqRq4",
+                benefit: "Sport-specific agility",
+                solution: "Kabbadi-inspired training",
+                intensity: "high",
+                calories: "150-180"
+            },
+            {
+                id: "AG3",
+                name: "Desi Cone Drills",
+                description: "Indian-style cone exercises",
+                category: "agility",
+                subcategory: "footwork",
+                difficulty: "beginner",
+                duration: "12:00",
+                sets: "6 × 2 min",
+                videoCode: "vXrR7qRqRq4",
+                benefit: "Basic agility improvement",
+                solution: "Cone agility training",
+                intensity: "medium",
+                calories: "110-140"
+            },
+            {
+                id: "AG4",
+                name: "Cricket Fielding Drills",
+                description: "Cricket-inspired agility",
+                category: "agility",
+                subcategory: "sport",
+                difficulty: "intermediate",
+                duration: "15:00",
+                sets: "5 × 3 min",
+                videoCode: "wXrR7qRqRq4",
+                benefit: "Quick direction changes",
+                solution: "Cricket fitness training",
+                intensity: "high",
+                calories: "140-170"
+            },
+            {
+                id: "AG5",
+                name: "Desi Reaction Training",
+                description: "Quick response exercises",
+                category: "agility",
+                subcategory: "reaction",
+                difficulty: "intermediate",
+                duration: "13:00",
+                sets: "8 × 1.5 min",
+                videoCode: "xXrR7qRqRq4",
+                benefit: "Improved reaction time",
+                solution: "Reaction speed training",
+                intensity: "medium",
+                calories: "130-160"
+            },
+            {
+                id: "AG6",
+                name: "Badminton Footwork Cardio",
+                description: "Court sport agility",
+                category: "agility",
+                subcategory: "sport",
+                difficulty: "intermediate",
+                duration: "17:00",
+                sets: "6 × 3 min",
+                videoCode: "yXrR7qRqRq4",
+                benefit: "Lateral movement agility",
+                solution: "Badminton fitness",
+                intensity: "high",
+                calories: "160-190"
+            },
+            {
+                id: "AG7",
+                name: "Desi Balance Training",
+                description: "Traditional balance exercises",
+                category: "agility",
+                subcategory: "balance",
+                difficulty: "beginner",
+                duration: "11:00",
+                sets: "5 × 2 min",
+                videoCode: "zXrR7qRqRq4",
+                benefit: "Improved stability",
+                solution: "Balance improvement",
+                intensity: "low",
+                calories: "90-120"
+            },
+            {
+                id: "AG8",
+                name: "Hockey Dodging Drills",
+                description: "Field hockey agility",
+                category: "agility",
+                subcategory: "sport",
+                difficulty: "intermediate",
+                duration: "16:00",
+                sets: "5 × 3 min",
+                videoCode: "aYrR7qRqRq4",
+                benefit: "Dodging and agility",
+                solution: "Hockey fitness training",
+                intensity: "high",
+                calories: "150-180"
+            }
+        ],
+
+        // 7️⃣ DESI RECOVERY & FLEXIBILITY (8 workouts)
+        recovery: [
+            {
+                id: "RC1",
+                name: "Desi Cool Down",
+                description: "Traditional Indian cool down",
+                category: "recovery",
+                subcategory: "cooldown",
+                difficulty: "beginner",
+                duration: "10:00",
+                sets: "1 × 10 min",
+                videoCode: "tXrR7qRqRq4",
+                benefit: "Muscle recovery, heart rate down",
+                solution: "Proper workout conclusion",
+                intensity: "very low",
+                calories: "40-60"
+            },
+            {
+                id: "RC2",
+                name: "Indian Stretching Routine",
+                description: "Traditional flexibility exercises",
+                category: "recovery",
+                subcategory: "stretching",
+                difficulty: "beginner",
+                duration: "12:00",
+                sets: "1 × 12 min",
+                videoCode: "uXrR7qRqRq4",
+                benefit: "Improved flexibility",
+                solution: "Post-workout stretching",
+                intensity: "very low",
+                calories: "50-70"
+            },
+            {
+                id: "RC3",
+                name: "Ayurvedic Recovery",
+                description: "Ancient healing exercises",
+                category: "recovery",
+                subcategory: "healing",
+                difficulty: "beginner",
+                duration: "15:00",
+                sets: "1 × 15 min",
+                videoCode: "zXrR7qRqRq4",
+                benefit: "Body-mind recovery",
+                solution: "Holistic recovery",
+                intensity: "very low",
+                calories: "60-80"
+            },
+            {
+                id: "RC4",
+                name: "Desi Foam Rolling",
+                description: "Indian-style self massage",
+                category: "recovery",
+                subcategory: "massage",
+                difficulty: "beginner",
+                duration: "14:00",
+                sets: "1 × 14 min",
+                videoCode: "aYrR7qRqRq4",
+                benefit: "Muscle tension release",
+                solution: "Self myofascial release",
+                intensity: "very low",
+                calories: "50-70"
+            },
+            {
+                id: "RC5",
+                name: "Yoga Nidra Recovery",
+                description: "Yogic sleep for recovery",
+                category: "recovery",
+                subcategory: "yoga",
+                difficulty: "beginner",
+                duration: "20:00",
+                sets: "1 × 20 min",
+                videoCode: "bYrR7qRqRq4",
+                benefit: "Deep relaxation",
+                solution: "Yogic recovery",
+                intensity: "very low",
+                calories: "70-90"
+            },
+            {
+                id: "RC6",
+                name: "Pranayama Recovery",
+                description: "Breathing for recovery",
+                category: "recovery",
+                subcategory: "breathing",
+                difficulty: "beginner",
+                duration: "10:00",
+                sets: "1 × 10 min",
+                videoCode: "cYrR7qRqRq4",
+                benefit: "Oxygenation and recovery",
+                solution: "Breath-based recovery",
+                intensity: "very low",
+                calories: "30-50"
+            },
+            {
+                id: "RC7",
+                name: "Desi Joint Mobility",
+                description: "Traditional joint exercises",
+                category: "recovery",
+                subcategory: "mobility",
+                difficulty: "beginner",
+                duration: "12:00",
+                sets: "1 × 12 min",
+                videoCode: "dYrR7qRqRq4",
+                benefit: "Joint health maintenance",
+                solution: "Joint mobility routine",
+                intensity: "very low",
+                calories: "40-60"
+            },
+            {
+                id: "RC8",
+                name: "Indian Meditation Cool Down",
+                description: "Meditative recovery",
+                category: "recovery",
+                subcategory: "meditation",
+                difficulty: "beginner",
+                duration: "15:00",
+                sets: "1 × 15 min",
+                videoCode: "eYrR7qRqRq4",
+                benefit: "Mental recovery and focus",
+                solution: "Meditation for recovery",
+                intensity: "very low",
+                calories: "50-70"
+            }
+        ]
+    };
+
+    // ==================== COMPREHENSIVE 50 FITNESS QUESTIONS ====================
+    const questions = [
+        // Section 1: Personal & Demographic (5 questions)
+        {
+            id: 1,
+            text: "What is your gender?",
+            options: ["Male", "Female", "Prefer not to say"],
+            category: "demographic",
+            scoreMap: { "Male": 0, "Female": 0, "Prefer not to say": 0 }
+        },
+        {
+            id: 2,
+            text: "What is your current age?",
+            options: ["Under 18", "18-25", "26-35", "36-45", "46-55", "56-65", "65+"],
+            category: "demographic",
+            scoreMap: { "Under 18": 0, "18-25": 5, "26-35": 10, "36-45": 15, "46-55": 20, "56-65": 25, "65+": 30 }
+        },
+        {
+            id: 3,
+            text: "What is your primary fitness goal?",
+            options: ["Weight loss", "Muscle building", "Cardio endurance", "General fitness", "Sports performance", "Health improvement"],
+            category: "demographic",
+            scoreMap: { "Weight loss": 25, "Muscle building": 20, "Cardio endurance": 15, "General fitness": 10, "Sports performance": 15, "Health improvement": 5 }
+        },
+        {
+            id: 4,
+            text: "Any previous injuries or health issues?",
+            options: ["None", "Knee issues", "Back problems", "Shoulder issues", "Heart conditions", "Multiple issues"],
+            category: "demographic",
+            scoreMap: { "None": 0, "Knee issues": 20, "Back problems": 25, "Shoulder issues": 15, "Heart conditions": 30, "Multiple issues": 35 }
+        },
+        {
+            id: 5,
+            text: "Current weight category?",
+            options: ["Underweight", "Normal weight", "Overweight", "Obese", "Severely obese"],
+            category: "demographic",
+            scoreMap: { "Underweight": 10, "Normal weight": 5, "Overweight": 20, "Obese": 30, "Severely obese": 40 }
+        },
+
+        // Section 2: Current Fitness Level (10 questions)
+        {
+            id: 6,
+            text: "How would you rate your current cardio fitness?",
+            options: ["Excellent", "Good", "Average", "Below average", "Poor"],
+            category: "fitness",
+            scoreMap: { "Excellent": 0, "Good": 10, "Average": 20, "Below average": 30, "Poor": 40 }
+        },
+        {
+            id: 7,
+            text: "Can you run/jog continuously for 10 minutes?",
+            options: ["Easily 30+ minutes", "Yes, 10-20 minutes", "With difficulty", "5-10 minutes", "Less than 5 minutes"],
+            category: "fitness",
+            scoreMap: { "Easily 30+ minutes": 0, "Yes, 10-20 minutes": 10, "With difficulty": 20, "5-10 minutes": 30, "Less than 5 minutes": 40 }
+        },
+        {
+            id: 8,
+            text: "How many push-ups can you do consecutively?",
+            options: ["30+", "20-30", "10-20", "5-10", "Less than 5"],
+            category: "fitness",
+            scoreMap: { "30+": 0, "20-30": 10, "10-20": 20, "5-10": 30, "Less than 5": 40 }
+        },
+        {
+            id: 9,
+            text: "How many squats can you do consecutively?",
+            options: ["50+", "30-50", "20-30", "10-20", "Less than 10"],
+            category: "fitness",
+            scoreMap: { "50+": 0, "30-50": 10, "20-30": 20, "10-20": 30, "Less than 10": 40 }
+        },
+        {
+            id: 10,
+            text: "How is your breathing during exercise?",
+            options: ["Controlled and easy", "Somewhat heavy", "Heavy but manageable", "Very heavy", "Extreme difficulty"],
+            category: "fitness",
+            scoreMap: { "Controlled and easy": 0, "Somewhat heavy": 10, "Heavy but manageable": 20, "Very heavy": 30, "Extreme difficulty": 40 }
+        },
+        {
+            id: 11,
+            text: "Recovery time after intense exercise?",
+            options: ["Very quick (<1 min)", "Quick (1-2 min)", "Average (3-5 min)", "Slow (5-10 min)", "Very slow (>10 min)"],
+            category: "fitness",
+            scoreMap: { "Very quick (<1 min)": 0, "Quick (1-2 min)": 10, "Average (3-5 min)": 20, "Slow (5-10 min)": 30, "Very slow (>10 min)": 40 }
+        },
+        {
+            id: 12,
+            text: "Daily activity level?",
+            options: ["Very active", "Moderately active", "Lightly active", "Sedentary", "Very sedentary"],
+            category: "fitness",
+            scoreMap: { "Very active": 0, "Moderately active": 10, "Lightly active": 20, "Sedentary": 30, "Very sedentary": 40 }
+        },
+        {
+            id: 13,
+            text: "Flexibility level?",
+            options: ["Very flexible", "Somewhat flexible", "Average", "Somewhat stiff", "Very stiff"],
+            category: "fitness",
+            scoreMap: { "Very flexible": 0, "Somewhat flexible": 10, "Average": 20, "Somewhat stiff": 30, "Very stiff": 40 }
+        },
+        {
+            id: 14,
+            text: "Balance during single leg exercises?",
+            options: ["Excellent balance", "Good balance", "Average", "Poor balance", "Cannot balance"],
+            category: "fitness",
+            scoreMap: { "Excellent balance": 0, "Good balance": 10, "Average": 20, "Poor balance": 30, "Cannot balance": 40 }
+        },
+        {
+            id: 15,
+            text: "Exercise-induced muscle soreness?",
+            options: ["Minimal soreness", "Mild soreness", "Moderate soreness", "Severe soreness", "Debilitating soreness"],
+            category: "fitness",
+            scoreMap: { "Minimal soreness": 0, "Mild soreness": 10, "Moderate soreness": 20, "Severe soreness": 30, "Debilitating soreness": 40 }
+        },
+
+        // Section 3: Lifestyle & Habits (10 questions)
+        {
+            id: 16,
+            text: "Occupation type?",
+            options: ["Sedentary desk job", "Standing job", "Light physical work", "Heavy physical work", "Manual labor"],
+            category: "lifestyle",
+            scoreMap: { "Sedentary desk job": 30, "Standing job": 20, "Light physical work": 10, "Heavy physical work": 5, "Manual labor": 0 }
+        },
+        {
+            id: 17,
+            text: "Daily sitting hours?",
+            options: ["< 4 hours", "4-6 hours", "6-8 hours", "8-10 hours", "> 10 hours"],
+            category: "lifestyle",
+            scoreMap: { "< 4 hours": 0, "4-6 hours": 15, "6-8 hours": 25, "8-10 hours": 35, "> 10 hours": 45 }
+        },
+        {
+            id: 18,
+            text: "Current exercise frequency?",
+            options: ["Daily", "4-6 times/week", "2-3 times/week", "Once a week", "Rarely/never"],
+            category: "lifestyle",
+            scoreMap: { "Daily": 0, "4-6 times/week": 10, "2-3 times/week": 20, "Once a week": 30, "Rarely/never": 40 }
+        },
+        {
+            id: 19,
+            text: "Type of current exercise?",
+            options: ["Cardio only", "Strength only", "Mixed training", "Sports", "No exercise"],
+            category: "lifestyle",
+            scoreMap: { "Cardio only": 10, "Strength only": 15, "Mixed training": 5, "Sports": 0, "No exercise": 30 }
+        },
+        {
+            id: 20,
+            text: "Daily step count average?",
+            options: ["10,000+", "7,500-10,000", "5,000-7,500", "2,500-5,000", "< 2,500"],
+            category: "lifestyle",
+            scoreMap: { "10,000+": 0, "7,500-10,000": 10, "5,000-7,500": 20, "2,500-5,000": 30, "< 2,500": 40 }
+        },
+        {
+            id: 21,
+            text: "Sleep quality and duration?",
+            options: ["7-8 hours, good quality", "7-8 hours, poor quality", "5-6 hours, good", "5-6 hours, poor", "< 5 hours"],
+            category: "lifestyle",
+            scoreMap: { "7-8 hours, good quality": 0, "7-8 hours, poor quality": 15, "5-6 hours, good": 20, "5-6 hours, poor": 30, "< 5 hours": 40 }
+        },
+        {
+            id: 22,
+            text: "Stress management?",
+            options: ["Excellent management", "Good management", "Average", "Poor management", "No management"],
+            category: "lifestyle",
+            scoreMap: { "Excellent management": 0, "Good management": 10, "Average": 20, "Poor management": 30, "No management": 40 }
+        },
+        {
+            id: 23,
+            text: "Water intake daily?",
+            options: ["3+ liters", "2-3 liters", "1-2 liters", "< 1 liter", "Very little"],
+            category: "lifestyle",
+            scoreMap: { "3+ liters": 0, "2-3 liters": 10, "1-2 liters": 20, "< 1 liter": 30, "Very little": 40 }
+        },
+        {
+            id: 24,
+            text: "Smoking or tobacco use?",
+            options: ["Never", "Former user", "Occasional", "Regular smoker", "Heavy smoker"],
+            category: "lifestyle",
+            scoreMap: { "Never": 0, "Former user": 20, "Occasional": 25, "Regular smoker": 35, "Heavy smoker": 45 }
+        },
+        {
+            id: 25,
+            text: "Alcohol consumption?",
+            options: ["None", "Occasionally", "Weekly", "Several times/week", "Daily"],
+            category: "lifestyle",
+            scoreMap: { "None": 0, "Occasionally": 10, "Weekly": 20, "Several times/week": 30, "Daily": 40 }
+        },
+
+        // Section 4: Nutrition & Diet (8 questions)
+        {
+            id: 26,
+            text: "Current diet quality?",
+            options: ["Excellent, balanced", "Good, mostly healthy", "Average, mixed", "Poor, mostly junk", "Very poor"],
+            category: "nutrition",
+            scoreMap: { "Excellent, balanced": 0, "Good, mostly healthy": 10, "Average, mixed": 20, "Poor, mostly junk": 30, "Very poor": 40 }
+        },
+        {
+            id: 27,
+            text: "Vegetable intake daily?",
+            options: ["5+ servings", "3-4 servings", "2-3 servings", "1 serving", "Rarely"],
+            category: "nutrition",
+            scoreMap: { "5+ servings": 0, "3-4 servings": 10, "2-3 servings": 20, "1 serving": 30, "Rarely": 40 }
+        },
+        {
+            id: 28,
+            text: "Fruit intake daily?",
+            options: ["3+ servings", "2 servings", "1 serving", "Few times/week", "Rarely"],
+            category: "nutrition",
+            scoreMap: { "3+ servings": 0, "2 servings": 10, "1 serving": 20, "Few times/week": 30, "Rarely": 40 }
+        },
+        {
+            id: 29,
+            text: "Protein intake?",
+            options: ["Adequate protein", "Moderate protein", "Inadequate protein", "Very little protein", "Mostly carbs"],
+            category: "nutrition",
+            scoreMap: { "Adequate protein": 0, "Moderate protein": 10, "Inadequate protein": 20, "Very little protein": 30, "Mostly carbs": 40 }
+        },
+        {
+            id: 30,
+            text: "Processed food consumption?",
+            options: ["Rarely", "Occasionally", "Few times/week", "Daily", "Multiple times daily"],
+            category: "nutrition",
+            scoreMap: { "Rarely": 0, "Occasionally": 10, "Few times/week": 20, "Daily": 30, "Multiple times daily": 40 }
+        },
+        {
+            id: 31,
+            text: "Sugar and sweet intake?",
+            options: ["Very little", "Occasionally", "Daily in moderation", "Daily excessive", "Multiple times daily"],
+            category: "nutrition",
+            scoreMap: { "Very little": 0, "Occasionally": 10, "Daily in moderation": 20, "Daily excessive": 30, "Multiple times daily": 40 }
+        },
+        {
+            id: 32,
+            text: "Eating pattern?",
+            options: ["Regular meals", "Irregular but healthy", "Skipping meals", "Late night eating", "Binge eating"],
+            category: "nutrition",
+            scoreMap: { "Regular meals": 0, "Irregular but healthy": 15, "Skipping meals": 25, "Late night eating": 30, "Binge eating": 40 }
+        },
+        {
+            id: 33,
+            text: "Desi food preferences?",
+            options: ["Healthy traditional", "Mixed traditional", "Mostly fried foods", "Street food regular", "Unhealthy choices"],
+            category: "nutrition",
+            scoreMap: { "Healthy traditional": 0, "Mixed traditional": 10, "Mostly fried foods": 25, "Street food regular": 35, "Unhealthy choices": 45 }
+        },
+
+        // Section 5: Exercise Experience & Preferences (7 questions)
+        {
+            id: 34,
+            text: "Previous cardio experience?",
+            options: ["Extensive", "Moderate", "Some experience", "Beginner", "No experience"],
+            category: "experience",
+            scoreMap: { "Extensive": 0, "Moderate": 10, "Some experience": 20, "Beginner": 30, "No experience": 40 }
+        },
+        {
+            id: 35,
+            text: "Knowledge of Indian exercises?",
+            options: ["Expert knowledge", "Good knowledge", "Basic knowledge", "Little knowledge", "No knowledge"],
+            category: "experience",
+            scoreMap: { "Expert knowledge": 0, "Good knowledge": 10, "Basic knowledge": 20, "Little knowledge": 30, "No knowledge": 40 }
+        },
+        {
+            id: 36,
+            text: "Preferred workout environment?",
+            options: ["Home", "Gym", "Outdoor", "Park", "Anywhere"],
+            category: "experience",
+            scoreMap: { "Home": 10, "Gym": 5, "Outdoor": 0, "Park": 5, "Anywhere": 0 }
+        },
+        {
+            id: 37,
+            text: "Time available for workouts?",
+            options: ["30+ minutes daily", "20-30 minutes", "15-20 minutes", "10-15 minutes", "< 10 minutes"],
+            category: "experience",
+            scoreMap: { "30+ minutes daily": 0, "20-30 minutes": 10, "15-20 minutes": 20, "10-15 minutes": 30, "< 10 minutes": 40 }
+        },
+        {
+            id: 38,
+            text: "Workout time preference?",
+            options: ["Morning", "Afternoon", "Evening", "Night", "Flexible"],
+            category: "experience",
+            scoreMap: { "Morning": 0, "Afternoon": 5, "Evening": 10, "Night": 15, "Flexible": 0 }
+        },
+        {
+            id: 39,
+            text: "Motivation level for 30-day program?",
+            options: ["Extremely motivated", "Very motivated", "Moderately motivated", "Somewhat motivated", "Low motivation"],
+            category: "experience",
+            scoreMap: { "Extremely motivated": 0, "Very motivated": 10, "Moderately motivated": 20, "Somewhat motivated": 30, "Low motivation": 40 }
+        },
+        {
+            id: 40,
+            text: "Equipment availability?",
+            options: ["Full equipment", "Basic equipment", "Minimal equipment", "No equipment", "Only bodyweight"],
+            category: "experience",
+            scoreMap: { "Full equipment": 0, "Basic equipment": 10, "Minimal equipment": 20, "No equipment": 30, "Only bodyweight": 15 }
+        },
+
+        // Section 6: Health & Medical (10 questions)
+        {
+            id: 41,
+            text: "Blood pressure status?",
+            options: ["Normal", "Pre-hypertension", "Stage 1 hypertension", "Stage 2 hypertension", "On medication"],
+            category: "health",
+            scoreMap: { "Normal": 0, "Pre-hypertension": 15, "Stage 1 hypertension": 25, "Stage 2 hypertension": 35, "On medication": 30 }
+        },
+        {
+            id: 42,
+            text: "Blood sugar levels?",
+            options: ["Normal", "Pre-diabetic", "Type 2 diabetes", "Type 1 diabetes", "On medication"],
+            category: "health",
+            scoreMap: { "Normal": 0, "Pre-diabetic": 20, "Type 2 diabetes": 30, "Type 1 diabetes": 35, "On medication": 25 }
+        },
+        {
+            id: 43,
+            text: "Cholesterol levels?",
+            options: ["Normal", "Borderline high", "High", "Very high", "On medication"],
+            category: "health",
+            scoreMap: { "Normal": 0, "Borderline high": 15, "High": 25, "Very high": 35, "On medication": 20 }
+        },
+        {
+            id: 44,
+            text: "Family history of heart disease?",
+            options: ["No history", "One relative", "Multiple relatives", "Strong family history", "Immediate family"],
+            category: "health",
+            scoreMap: { "No history": 0, "One relative": 10, "Multiple relatives": 20, "Strong family history": 30, "Immediate family": 25 }
+        },
+        {
+            id: 45,
+            text: "Joint pain issues?",
+            options: ["None", "Occasional", "Frequent", "Chronic", "Severe"],
+            category: "health",
+            scoreMap: { "None": 0, "Occasional": 15, "Frequent": 25, "Chronic": 35, "Severe": 45 }
+        },
+        {
+            id: 46,
+            text: "Breathing issues during exercise?",
+            options: ["None", "Mild shortness", "Moderate shortness", "Severe shortness", "Asthma/bronchitis"],
+            category: "health",
+            scoreMap: { "None": 0, "Mild shortness": 15, "Moderate shortness": 25, "Severe shortness": 35, "Asthma/bronchitis": 40 }
+        },
+        {
+            id: 47,
+            text: "Recent weight changes?",
+            options: ["Stable weight", "Gained 5-10 lbs", "Gained 10+ lbs", "Lost 5-10 lbs", "Lost 10+ lbs"],
+            category: "health",
+            scoreMap: { "Stable weight": 0, "Gained 5-10 lbs": 15, "Gained 10+ lbs": 25, "Lost 5-10 lbs": 10, "Lost 10+ lbs": 15 }
+        },
+        {
+            id: 48,
+            text: "Sleep apnea or snoring?",
+            options: ["No issues", "Mild snoring", "Moderate snoring", "Severe snoring", "Sleep apnea"],
+            category: "health",
+            scoreMap: { "No issues": 0, "Mild snoring": 10, "Moderate snoring": 20, "Severe snoring": 30, "Sleep apnea": 40 }
+        },
+        {
+            id: 49,
+            text: "Energy levels throughout day?",
+            options: ["Consistent high energy", "Morning energy", "Afternoon slump", "Low energy", "Chronic fatigue"],
+            category: "health",
+            scoreMap: { "Consistent high energy": 0, "Morning energy": 10, "Afternoon slump": 20, "Low energy": 30, "Chronic fatigue": 40 }
+        },
+        {
+            id: 50,
+            text: "Medications affecting exercise?",
+            options: ["None", "Blood pressure meds", "Diabetes meds", "Multiple medications", "Exercise restrictions"],
+            category: "health",
+            scoreMap: { "None": 0, "Blood pressure meds": 15, "Diabetes meds": 20, "Multiple medications": 30, "Exercise restrictions": 40 }
+        }
+    ];
+
+    // ==================== UI FUNCTIONS ====================
+
+    function initApp() {
+        showQuestion();
+        setupEventListeners();
+        document.getElementById('quiz-bg').classList.remove('hidden');
+    }
+
+    function showQuestion() {
+        if (appState.currentQuestion >= appState.totalQuestions) {
+            generatePersonalizedProgram();
+            return;
+        }
+        
+        const question = questions[appState.currentQuestion];
+        document.getElementById('question-text').textContent = question.text;
+        
+        // Update progress
+        const progressPercent = ((appState.currentQuestion + 1) / appState.totalQuestions) * 100;
+        document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+        document.getElementById('question-counter').textContent = `${appState.currentQuestion + 1}/${appState.totalQuestions}`;
+        
+        // Update section label
+        const sections = ["Demographics", "Fitness Level", "Lifestyle", "Nutrition", "Experience", "Health"];
+        const sectionIndex = Math.floor(appState.currentQuestion / 10);
+        document.getElementById('step-label').textContent = sections[sectionIndex] || "Assessment";
+        document.getElementById('progress-text').textContent = `Section ${sectionIndex + 1} of 6 - ${sections[sectionIndex]}`;
+        
+        // Clear and show options
+        const container = document.getElementById('options-container');
+        container.innerHTML = '';
+        
+        question.options.forEach((option, index) => {
+            const btn = document.createElement('button');
+            btn.className = "w-full option-btn p-3.5 rounded-lg text-sm font-bold flex justify-between items-center mb-1.5";
+            btn.innerHTML = `
+                <span class="text-left">${option}</span>
+                <div class="w-5 h-5 rounded-full border border-gold-primary/40 flex items-center justify-center">
+                    <div class="w-2 h-2 rounded-full bg-gold-primary opacity-0"></div>
+                </div>
+            `;
+            
+            // Add animation delay for staggered appearance
+            btn.style.animationDelay = `${index * 0.05}s`;
+            btn.classList.add('fade-in');
+            
+            btn.onclick = () => handleAnswer(option, question);
+            container.appendChild(btn);
+        });
+        
+        // Show quiz section
+        document.getElementById('quiz-section').classList.remove('hidden');
+        document.getElementById('analysis-section').classList.add('hidden');
+        document.getElementById('workout-section').classList.add('hidden');
+        
+        // Update background
+        updateBackground('quiz');
+    }
+
+    function handleAnswer(answer, question) {
+        // Store in user profile
+        appState.userProfile[`q${question.id}`] = answer;
+        
+        // Store key information
+        if (question.id === 1) appState.gender = answer;
+        if (question.id === 2) appState.age = answer;
+        if (question.id === 3) appState.fitnessGoal = answer;
+        
+        // Update scores based on answers
+        updateScores(answer, question);
+        
+        // Add visual feedback
+        const selectedOption = event.target.closest('.option-btn');
+        if (selectedOption) {
+            selectedOption.classList.add('bg-gold-primary/20');
+            selectedOption.style.borderColor = 'var(--gold-primary)';
+            selectedOption.querySelector('.w-2.h-2').classList.remove('opacity-0');
+        }
+        
+        // Move to next question
+        setTimeout(() => {
+            appState.currentQuestion++;
+            showQuestion();
+        }, 300);
+    }
+
+    function updateScores(answer, question) {
+        // Use score map for accurate scoring
+        if (question.scoreMap && question.scoreMap[answer] !== undefined) {
+            const score = question.scoreMap[answer];
+            
+            // Categorize scores based on question type
+            if (question.category === "fitness") {
+                if (question.id >= 6 && question.id <= 10) {
+                    appState.scores.cardio += score;
+                    appState.scores.endurance += score;
+                }
+                if (question.id >= 11 && question.id <= 15) {
+                    appState.scores.strength += score;
+                    appState.scores.stamina += score;
+                }
+            }
+            
+            if (question.category === "lifestyle") {
+                if (question.id >= 16 && question.id <= 20) {
+                    appState.scores.cardio += score;
+                    appState.scores.endurance += score;
+                }
+                if (question.id >= 21 && question.id <= 25) {
+                    appState.scores.stamina += score;
+                }
+            }
+            
+            if (question.category === "nutrition") {
+                appState.scores.fatLoss += score;
+            }
+            
+            if (question.category === "health") {
+                appState.scores.cardio += score * 0.5;
+                appState.scores.endurance += score * 0.5;
+            }
+            
+            // Specific goal-based scoring
+            if (question.id === 3) {
+                if (answer === "Weight loss") appState.scores.fatLoss += 30;
+                if (answer === "Cardio endurance") appState.scores.endurance += 30;
+                if (answer === "Muscle building") appState.scores.strength += 30;
+            }
+        }
+    }
+
+    function generatePersonalizedProgram() {
+        document.getElementById('quiz-section').classList.add('hidden');
+        document.getElementById('analysis-section').classList.remove('hidden');
+        
+        // Update background
+        updateBackground('analysis');
+        
+        // Analyze user profile and select appropriate workouts
+        analyzeUserProfile();
+        
+        // Calculate scores with normalization
+        const totalPossibleScore = 1200;
+        const totalUserScore = Object.values(appState.scores).reduce((a, b) => a + b, 0);
+        const scorePercentage = Math.min(100, Math.round((totalUserScore / totalPossibleScore) * 100));
+        
+        // Calculate individual scores for display
+        const cardioScore = Math.min(100, Math.round(100 - (appState.scores.cardio / 12)));
+        const strengthScore = Math.min(100, Math.round(100 - (appState.scores.strength / 10)));
+        const programScore = Math.min(100, Math.round(100 - (scorePercentage / 4)));
+        
+        // Animate scores
+        animateScore('cardio-score', cardioScore);
+        animateScore('strength-score', strengthScore);
+        animateScore('program-score', programScore);
+        
+        // Generate analysis and solution points
+        generateAnalysis();
+    }
+
+    function analyzeUserProfile() {
+        appState.dayWorkouts = {};
+        appState.dayProgress = {};
+        appState.selectedWorkouts = [];
+        
+        // Determine primary focus area based on highest score
+        const scores = appState.scores;
+        const maxScore = Math.max(scores.fatLoss, scores.cardio, scores.strength, scores.endurance);
+        
+        let primaryCategory = "basic_cardio";
+        
+        if (maxScore === scores.fatLoss && scores.fatLoss > 100) {
+            primaryCategory = "fat_burning";
+        } else if (maxScore === scores.strength && scores.strength > 80) {
+            primaryCategory = "strength_cardio";
+        } else if (maxScore === scores.endurance && scores.endurance > 80) {
+            primaryCategory = "intermediate";
+        } else if (scores.cardio < 30 && scores.stamina < 30) {
+            // Good cardio = advanced exercises
+            primaryCategory = "advanced";
+        } else if (scores.flexibility > 40) {
+            primaryCategory = "agility";
+        }
+        
+        // Generate workout program for 30 days
+        generate30DayProgram(primaryCategory);
+    }
+
+    function generate30DayProgram(primaryCategory) {
+        appState.dayWorkouts = {};
+        appState.dayProgress = {};
+        
+        // For each day, select appropriate workouts
+        for (let day = 1; day <= 30; day++) {
+            appState.dayWorkouts[day] = generateDayWorkouts(day, primaryCategory);
+            appState.dayProgress[day] = [];
+        }
+        
+        // Set current day workouts
+        appState.selectedWorkouts = appState.dayWorkouts[1];
+    }
+
+    function generateDayWorkouts(day, primaryCategory) {
+        let dayWorkouts = [];
+        
+        // Helper function to get filtered workouts
+        const getFilteredWorkouts = (category, count) => {
+            let workouts = workoutLibrary[category] || [];
+            return shuffleArray(workouts).slice(0, count);
+        };
+        
+        // Day-specific progression
+        if (day <= 7) {
+            // Week 1: Basic cardio and recovery
+            dayWorkouts.push(...getFilteredWorkouts("basic_cardio", 4));
+            dayWorkouts.push(...getFilteredWorkouts("recovery", 2));
+        } else if (day <= 14) {
+            // Week 2: Add primary category
+            dayWorkouts.push(...getFilteredWorkouts("basic_cardio", 2));
+            dayWorkouts.push(...getFilteredWorkouts(primaryCategory, 3));
+            dayWorkouts.push(...getFilteredWorkouts("recovery", 1));
+        } else if (day <= 21) {
+            // Week 3: Focus on primary category
+            dayWorkouts.push(...getFilteredWorkouts("intermediate", 1));
+            dayWorkouts.push(...getFilteredWorkouts(primaryCategory, 4));
+            dayWorkouts.push(...getFilteredWorkouts("recovery", 1));
+        } else {
+            // Week 4: Advanced and mixed
+            dayWorkouts.push(...getFilteredWorkouts("advanced", 1));
+            dayWorkouts.push(...getFilteredWorkouts("strength_cardio", 2));
+            dayWorkouts.push(...getFilteredWorkouts(primaryCategory, 2));
+            dayWorkouts.push(...getFilteredWorkouts("recovery", 1));
+        }
+        
+        // Ensure exactly 6 workouts per day
+        if (dayWorkouts.length > 6) {
+            dayWorkouts = dayWorkouts.slice(0, 6);
+        }
+        
+        // Sort by difficulty
+        dayWorkouts.sort((a, b) => {
+            const difficultyOrder = { "beginner": 1, "intermediate": 2, "advanced": 3 };
+            return difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty];
+        });
+        
+        return dayWorkouts;
+    }
+
+    function generateAnalysis() {
+        const analysisText = document.getElementById('analysis-text');
+        const solutionPoints = document.getElementById('solution-points');
+        
+        // Generate analysis based on scores
+        let analysis = "Based on your comprehensive 50-point desi fitness assessment, ";
+        
+        if (appState.scores.fatLoss > 100) {
+            analysis += "weight loss and fat burning will be your primary focus. ";
+        } else if (appState.scores.cardio > 80) {
+            analysis += "cardiovascular improvement is a key priority. ";
+        } else if (appState.scores.strength > 80) {
+            analysis += "strength building will enhance your fitness journey. ";
+        } else {
+            analysis += "general fitness improvement will be your focus. ";
+        }
+        
+        if (appState.scores.endurance > 60) {
+            analysis += "Endurance building is important for your progress. ";
+        }
+        
+        if (appState.scores.stamina < 30) {
+            analysis += "Your good stamina allows for more intense workouts. ";
+        }
+        
+        analysis += `Your personalized 30-day Desi Mehnat program includes 6 carefully selected Indian-style workouts each day, specifically designed for ${appState.fitnessGoal || 'your fitness goals'}.`;
+        
+        analysisText.textContent = analysis;
+        
+        // Generate solution points
+        solutionPoints.innerHTML = '';
+        
+        const solutions = [
+            "🎯 <span class='text-red-400 font-bold'>Desi Style:</span> Traditional Indian workout methods",
+            "🔥 <span class='text-red-400 font-bold'>Cardio Focus:</span> Heart-pumping desi exercises",
+            "🔄 <span class='text-red-400 font-bold'>Progressive Plan:</span> Gradually increases intensity over 30 days",
+            "⏱️ <span class='text-red-400 font-bold'>Time-Efficient:</span> 15-30 minutes daily commitment",
+            "📈 <span class='text-red-400 font-bold'>Measurable Results:</span> Track progress with completion system",
+            "🎬 <span class='text-red-400 font-bold'>Video Guidance:</span> Desi-style exercise demonstrations"
+        ];
+        
+        solutions.forEach((solution, index) => {
+            const point = document.createElement('div');
+            point.className = "text-xs text-gray-300 flex items-start fade-in";
+            point.style.animationDelay = `${index * 0.1}s`;
+            point.innerHTML = `<i class="fas fa-check text-green-500 mr-2 mt-0.5"></i> ${solution}`;
+            solutionPoints.appendChild(point);
+        });
+    }
+
+    function showWorkoutProgram() {
+        document.getElementById('analysis-section').classList.add('hidden');
+        document.getElementById('workout-section').classList.remove('hidden');
+        
+        // Update background
+        updateBackground('workout');
+        
+        renderWorkoutProgram();
+    }
+
+    function renderWorkoutProgram() {
+        const workoutList = document.getElementById('workout-list');
+        workoutList.innerHTML = '';
+        
+        // Update day display
+        document.getElementById('current-day').textContent = appState.currentDay;
+        
+        // Get workouts for current day
+        const currentDayWorkouts = appState.dayWorkouts[appState.currentDay] || [];
+        const completedWorkouts = appState.dayProgress[appState.currentDay] || [];
+        
+        // Update stats
+        const completedCount = completedWorkouts.length;
+        const totalWorkouts = currentDayWorkouts.length;
+        document.getElementById('completion-stats').textContent = `${completedCount}/${totalWorkouts} completed`;
+        
+        if (currentDayWorkouts.length === 0) {
+            workoutList.innerHTML = `
+                <div class="text-center py-8">
+                    <i class="fas fa-exclamation-triangle text-3xl text-yellow-500 mb-3"></i>
+                    <p class="text-gray-300">No workouts generated for today. Please restart assessment.</p>
+                </div>
+            `;
+            return;
+        }
+        
+        currentDayWorkouts.forEach((workout, index) => {
+            const isCompleted = completedWorkouts.includes(workout.id);
+            const isCurrent = index === completedWorkouts.length;
+            const isLocked = index > completedWorkouts.length;
+            
+            const card = document.createElement('div');
+            card.className = `workout-card p-3.5 rounded-lg ${isLocked ? 'locked' : ''} ${isCurrent ? 'current' : ''} ${isCompleted ? 'completed' : ''} fade-in`;
+            card.style.animationDelay = `${index * 0.08}s`;
+            
+            card.innerHTML = `
+                <div class="flex items-center gap-3.5">
+                    <div class="number-indicator ${isCurrent ? 'number-current' : isCompleted ? 'number-completed' : 'number-locked'}">
+                        ${index + 1}
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-1.5">
+                            <span class="category-tag ${workout.category.includes('desi') || workout.category.includes('indian') ? 'desi-tag' : ''}">${workout.category}</span>
+                            <span class="text-xs text-gray-400 font-bold">${workout.difficulty}</span>
+                            <span class="text-xs px-2 py-0.5 rounded ${workout.intensity === 'very high' ? 'bg-red-900/30 text-red-300' : workout.intensity === 'high' ? 'bg-orange-900/30 text-orange-300' : workout.intensity === 'medium' ? 'bg-yellow-900/30 text-yellow-300' : 'bg-green-900/30 text-green-300'}">${workout.intensity}</span>
+                        </div>
+                        <h3 class="text-sm font-bold text-white mb-1.5 truncate text-3d-white">${workout.name}</h3>
+                        <p class="text-xs text-gray-300 line-clamp-1 text-3d-secondary">${workout.benefit}</p>
+                        <div class="flex items-center gap-3.5 mt-2 text-xs text-gray-400">
+                            <span class="flex items-center"><i class="fas fa-clock mr-1.5"></i> ${workout.duration}</span>
+                            <span class="flex items-center"><i class="fas fa-redo mr-1.5"></i> ${workout.sets}</span>
+                            <span class="flex items-center"><i class="fas fa-fire mr-1.5"></i> ${workout.calories} cal</span>
+                        </div>
+                    </div>
+                    <div class="shrink-0">
+                        ${isLocked ? 
+                            '<i class="fas fa-lock text-base text-gray-600"></i>' : 
+                         isCompleted ? 
+                            '<i class="fas fa-check-circle text-lg text-green-500" style="filter: drop-shadow(0 2px 0 rgba(0,0,0,0.3))"></i>' : 
+                            '<i class="fas fa-play-circle text-lg text-red-500" style="filter: drop-shadow(0 2px 0 rgba(224,60,49,0.3))"></i>'}
+                    </div>
+                </div>
+            `;
+            
+            if (!isLocked) {
+                card.onclick = () => openWorkoutVideo(workout, index);
+            }
+            
+            workoutList.appendChild(card);
+        });
+        
+        // Scroll to current workout
+        setTimeout(() => {
+            const currentCard = document.querySelector('.workout-card.current');
+            if (currentCard) {
+                currentCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }, 300);
+    }
+
+    function openWorkoutVideo(workout, index) {
+        appState.currentVideoIndex = index;
+        
+        // Clear previous content
+        const videoFrame = document.getElementById('video-frame');
+        videoFrame.innerHTML = '';
+        
+        // Create 16:9 YouTube iframe with proper settings
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${workout.videoCode}?autoplay=1&controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&playsinline=1`;
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.allowFullscreen = true;
+        iframe.style.position = "absolute";
+        iframe.style.top = "0";
+        iframe.style.left = "0";
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.border = "none";
+        
+        videoFrame.appendChild(iframe);
+        
+        // Update modal info
+        document.getElementById('video-title').textContent = workout.name;
+        document.getElementById('video-description').textContent = workout.description;
+        document.getElementById('video-duration').textContent = workout.duration;
+        document.getElementById('video-sets').textContent = workout.sets;
+        document.getElementById('video-category').textContent = workout.category;
+        document.getElementById('solution-text').textContent = workout.solution;
+        
+        // Show modal
+        document.getElementById('video-modal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        
+        // Add modal background
+        document.querySelector('.modal-background').classList.remove('hidden');
+    }
+
+    function repeatCurrentVideo() {
+        const currentDayWorkouts = appState.dayWorkouts[appState.currentDay] || [];
+        const currentWorkout = currentDayWorkouts[appState.currentVideoIndex];
+        if (currentWorkout) {
+            openWorkoutVideo(currentWorkout, appState.currentVideoIndex);
+        }
+    }
+
+    function nextVideo() {
+        // Mark current workout as completed for current day
+        const currentDayWorkouts = appState.dayWorkouts[appState.currentDay] || [];
+        const currentWorkout = currentDayWorkouts[appState.currentVideoIndex];
+        
+        if (currentWorkout) {
+            if (!appState.dayProgress[appState.currentDay]) {
+                appState.dayProgress[appState.currentDay] = [];
+            }
+            
+            if (!appState.dayProgress[appState.currentDay].includes(currentWorkout.id)) {
+                appState.dayProgress[appState.currentDay].push(currentWorkout.id);
+            }
+        }
+        
+        closeVideoModal();
+        
+        // Check if all workouts completed for current day
+        const completedWorkouts = appState.dayProgress[appState.currentDay] || [];
+        const totalWorkouts = currentDayWorkouts.length;
+        
+        if (completedWorkouts.length === totalWorkouts) {
+            // Day completed, move to next day
+            if (appState.currentDay < 30) {
+                appState.currentDay++;
+                setTimeout(() => {
+                    renderWorkoutProgram();
+                    // Show completion message
+                    const completionMsg = document.createElement('div');
+                    completionMsg.className = "fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-900/90 text-white px-4 py-2 rounded-lg z-50 fade-in";
+                    completionMsg.innerHTML = `<i class="fas fa-check-circle mr-2"></i> Day ${appState.currentDay-1} completed! Starting Day ${appState.currentDay}`;
+                    document.body.appendChild(completionMsg);
+                    setTimeout(() => completionMsg.remove(), 3000);
+                }, 300);
+            } else {
+                setTimeout(() => {
+                    // Show final completion message
+                    const finalMsg = document.createElement('div');
+                    finalMsg.className = "fixed top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-red-600 to-saffron text-white px-4 py-3 rounded-lg z-50 fade-in";
+                    finalMsg.innerHTML = `<i class="fas fa-trophy mr-2"></i> <strong>Shabaash!</strong> You've completed the 30-day Desi Mehnat program!`;
+                    document.body.appendChild(finalMsg);
+                    setTimeout(() => finalMsg.remove(), 5000);
+                }, 300);
+            }
+        } else {
+            renderWorkoutProgram();
+        }
+    }
+
+    function closeVideoModal() {
+        document.getElementById('video-modal').classList.add('hidden');
+        document.getElementById('video-frame').innerHTML = '';
+        document.body.style.overflow = 'auto';
+        document.querySelector('.modal-background').classList.add('hidden');
+    }
+
+    function restartAssessment() {
+        // Reset all state
+        appState = {
+            currentQuestion: 0,
+            gender: null,
+            age: null,
+            fitnessGoal: null,
+            currentFitness: null,
+            experience: null,
+            healthIssues: [],
+            scores: { cardio: 0, strength: 0, endurance: 0, flexibility: 0, fatLoss: 0, stamina: 0 },
+            currentDay: 1,
+            completedWorkouts: [],
+            totalQuestions: 50,
+            selectedCategory: null,
+            selectedWorkouts: [],
+            currentVideoIndex: 0,
+            userProfile: {},
+            dayProgress: {},
+            dayWorkouts: {}
+        };
+        
+        // Reset UI
+        document.getElementById('analysis-section').classList.add('hidden');
+        document.getElementById('workout-section').classList.add('hidden');
+        document.getElementById('quiz-section').classList.remove('hidden');
+        
+        // Update background
+        updateBackground('quiz');
+        
+        // Restart questions
+        showQuestion();
+    }
+
+    // ==================== HELPER FUNCTIONS ====================
+
+    function animateScore(elementId, targetValue) {
+        const element = document.getElementById(elementId);
+        let current = 0;
+        const increment = targetValue / 40;
+        const interval = setInterval(() => {
+            current += increment;
+            if (current >= targetValue) {
+                current = targetValue;
+                clearInterval(interval);
+            }
+            element.textContent = Math.round(current) + "%";
+        }, 20);
+    }
+
+    function shuffleArray(array) {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    }
+
+    function updateBackground(section) {
+        // Hide all backgrounds first
+        document.getElementById('quiz-bg').classList.add('hidden');
+        document.getElementById('analysis-bg').classList.add('hidden');
+        document.getElementById('workout-bg').classList.add('hidden');
+        
+        // Show appropriate background
+        if (section === 'quiz') {
+            document.getElementById('quiz-bg').classList.remove('hidden');
+        } else if (section === 'analysis') {
+            document.getElementById('analysis-bg').classList.remove('hidden');
+        } else if (section === 'workout') {
+            document.getElementById('workout-bg').classList.remove('hidden');
+        }
+    }
+
+    function setupEventListeners() {
+        // Escape key closes modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (!document.getElementById('video-modal').classList.contains('hidden')) {
+                    closeVideoModal();
+                }
+            }
+        });
+        
+        // Touch feedback
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', () => {
+                btn.style.transform = 'translateY(1px)';
+            });
+            btn.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    btn.style.transform = '';
+                }, 150);
+            });
+        });
+        
+        // Handle back button for WebView
+        window.addEventListener('popstate', function(event) {
+            if (!document.getElementById('video-modal').classList.contains('hidden')) {
+                closeVideoModal();
+                history.pushState(null, null, window.location.href);
+            }
+        });
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', initApp);
+</script>
+</body>
+</html>
